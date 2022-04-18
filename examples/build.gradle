@@ -1,0 +1,12 @@
+plugins {
+    id('org.jetbrains.kotlin.jvm')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation project(':ctx')
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
