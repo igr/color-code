@@ -10,9 +10,11 @@ class MakeReservation(
 ) : (ReservationRequest) -> Reservation {
 
     override fun invoke(newReservation: ReservationRequest): Reservation {
+        // first fetch
         val tables = fetchAllRestaurantTables(newReservation.restaurantId)
         val reservationsForDay = findRestaurantReservationsForDay(newReservation.restaurantId, newReservation.slot.day)
 
+        // then process
         return tables
             .filter { tableHasCapacity(it, newReservation.places) }
             .filter { tableNotOccupied(it, newReservation.slot, reservationsForDay) }
