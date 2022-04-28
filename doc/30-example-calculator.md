@@ -16,26 +16,6 @@ Interesting is the input tuple naming. The first idea might be `ValueTuple`, or 
 
 This example is trivial. FUNCTIONs are: `add`, `subtract`...
 
-## 2 + 3
-
-Example:
-
-```kotlin
-    Ctx.of(Operands.of(2, 3))
-        .map { multiply(it) }
-        .use { println(it) }
-```
-
-or without lambdas:
-
-```kotlin
-    Ctx.of(Operands.of(2, 3))
-        .map(add)
-        .use(printValue)
-```
-
-These two examples are not identical. In the first example, we create an inline lambdas, i.e. the FUNCTION. In the second example, we pass the FUNCTION references.
-
 ## Calculation continuation
 
 Calculation of `Operands` results with the single `Value` in the context. We need to bind it with another `Value` to form a new `Operands` instance.

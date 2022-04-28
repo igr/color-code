@@ -1,0 +1,11 @@
+### New reservation
+POST http://localhost:8080/reservations
+Content-Type: application/json
+
+{
+    "restaurantId": {{restaurantId}},
+    "people": "2",
+    "day": "2022-04-22",
+    "time": "12:00",
+    "duration": "120"
+}

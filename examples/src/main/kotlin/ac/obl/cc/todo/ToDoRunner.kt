@@ -12,6 +12,5 @@ fun ToDo.actionOne() {
     val task2 = addNewTodo(NewToDoItem("Finish paperwork"))
     println(task1)
     println(task2)
-    findTodoByText("coffee")
-        .forEach { println(it.task) }
+    findTodoByText("coffee").forEach { println(it.task) }
 }

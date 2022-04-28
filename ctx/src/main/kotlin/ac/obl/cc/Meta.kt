@@ -14,6 +14,13 @@ package ac.obl.cc
 annotation class DATA
 
 /**
+ * 🟪
+ */
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.SOURCE)
+annotation class BUILDER
+
+/**
  * 🟥
  */
 @Target(AnnotationTarget.CLASS)

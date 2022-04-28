@@ -1,0 +1,15 @@
+plugins {
+    id('org.jetbrains.kotlin.jvm')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    api project(":pectopah:model")
+    implementation project(':pectopah:office-api')
+    implementation project(':pectopah:repo-api')
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}

@@ -1,2 +1,12 @@
+enableFeaturePreview('VERSION_CATALOGS')
+
 include 'ctx'
 include 'examples'
+include 'pectopah'
+include 'pectopah:model'
+include 'pectopah:model-serializers'
+include 'pectopah:office-api'
+include 'pectopah:office'
+include 'pectopah:boot'
+include 'pectopah:repo-api'
+include 'pectopah:repo-db'

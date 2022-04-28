@@ -1,0 +1,12 @@
+### List of restaurants
+GET http://localhost:8080/restaurants
+Accept: application/json
+
+### New restaurant
+POST http://localhost:8080/restaurants
+Content-Type: application/json
+
+{
+  "name": "LeChick",
+  "maxDuration": 180
+}

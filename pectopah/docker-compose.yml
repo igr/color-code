@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  pdb:
+    image: postgres:14.2
+    container_name: pdb
+    restart: "always"
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pdb_data:/var/lib/postgresql/data
+
+volumes:
+  pdb_data:

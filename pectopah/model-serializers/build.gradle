@@ -1,0 +1,10 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.serialization' version "$kotlin_version"
+}
+
+dependencies {
+    implementation project(":pectopah:model")
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.3.2"
+}

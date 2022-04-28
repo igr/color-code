@@ -13,9 +13,9 @@ class CtxD<A>(private val provider: () -> A)  {
          */
         fun <V> of(value: V) = CtxD { value }
 
-        operator fun <V> plus(value: V): CtxD<V> {
-            return CtxD { value }
-        }
+        operator fun <V> plus(value: V): CtxD<V> = CtxD { value }
+
+        operator fun <V> plus(provider: () -> V): CtxD<V> = CtxD(provider)
     }
 
     // map
@@ -27,9 +27,7 @@ class CtxD<A>(private val provider: () -> A)  {
         return CtxD { fn(provider()) }
     }
 
-    operator fun <B> plus(fn: (A) -> B): CtxD<B> {
-        return map(fn)
-    }
+    operator fun <B> plus(fn: (A) -> B): CtxD<B> = map(fn)
 
     // consume
 
@@ -44,9 +42,7 @@ class CtxD<A>(private val provider: () -> A)  {
         }
     }
 
-    operator fun minus(consumer: (A) -> Unit): CtxD<A> {
-        return use(consumer)
-    }
+    operator fun minus(consumer: (A) -> Unit): CtxD<A> = use(consumer)
 
     // return
 
@@ -60,5 +56,17 @@ class CtxD<A>(private val provider: () -> A)  {
     operator fun invoke(): A {
         return provider()
     }
+
+    // wrap
+
+    fun wrap(wrapper: (() -> A) -> A): CtxD<A> {
+        return CtxD {
+            wrapper {
+                invoke()
+            }
+        }
+    }
+
+    operator fun times(wrapper: (() -> A) -> A): CtxD<A> = wrap(wrapper)
 
 }

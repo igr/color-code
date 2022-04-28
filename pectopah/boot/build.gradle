@@ -1,0 +1,33 @@
+plugins {
+    id('org.jetbrains.kotlin.jvm')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation project(':ctx')
+    implementation project(':pectopah:model')
+    implementation project(':pectopah:model-serializers')
+    implementation project(':pectopah:office-api')
+    implementation project(':pectopah:office')
+    implementation project(':pectopah:repo-api')
+    implementation project(':pectopah:repo-db')
+
+    implementation "io.ktor:ktor-server-content-negotiation-jvm:$ktor_version"
+    implementation "io.ktor:ktor-server-core-jvm:$ktor_version"
+    implementation "io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version"
+    implementation "io.ktor:ktor-server-call-logging-jvm:$ktor_version"
+    implementation "io.ktor:ktor-server-default-headers-jvm:$ktor_version"
+    implementation "io.ktor:ktor-server-compression-jvm:$ktor_version"
+    implementation "io.ktor:ktor-server-netty-jvm:$ktor_version"
+    implementation "ch.qos.logback:logback-classic:$logback_version"
+
+    implementation "org.jetbrains.exposed:exposed-core:$exposed_version"
+    implementation "com.zaxxer:HikariCP:4.0.3"
+    runtimeOnly "org.postgresql:postgresql:42.3.3"
+
+    testImplementation "io.ktor:ktor-server-tests-jvm:$ktor_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+}
