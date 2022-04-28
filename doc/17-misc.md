@@ -16,6 +16,12 @@ Obviously, DI of the dependencies is part of the configuration.
 
 Simple as that, yet powerful.
 
+I wish IDE and tools work more smoothly with modules.
+
+## First split abstractions, then implementations
+
+A common approach is to group all services in one module (package), repository class in another, etc. Avoid this. Instead, separate abstractions first, and then different verbs and repo.
+
 ## API layer may have different transport implementation
 
 API invocations could be replaceable without changing the implementation. For example, API invocation could be:
