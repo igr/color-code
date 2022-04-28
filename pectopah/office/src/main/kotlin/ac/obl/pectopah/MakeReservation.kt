@@ -16,10 +16,7 @@ class MakeReservation(
         return tables
             .filter { tableHasCapacity(it, newReservation.places) }
             .filter { tableNotOccupied(it, newReservation.slot, reservationsForDay) }
-            .map {
-                println(it)
-                storeReservation(newReservation, listOf(it))
-            }
+            .map { storeReservation(newReservation, listOf(it)) }
             .firstOrNull() ?: throw IllegalStateException("Reservation not available")
     }
 
