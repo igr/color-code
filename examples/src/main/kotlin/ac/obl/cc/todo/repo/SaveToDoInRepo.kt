@@ -1,15 +1,14 @@
 package ac.obl.cc.todo.repo
 
 import ac.obl.cc.ACTION
-import ac.obl.cc.ctx.Ctx
+
+// Uses a STATE and becomes an ACTION.
 
 @ACTION
 internal val saveToDoInRepoWithDb: SaveToDoInRepo = { newToDoItem ->
-    (Ctx
-        + newToDoItem
-        + { it.toToDoRecord() }
-        + { Db.save(it) }           // state as implicit argument
-        + { it.toToDoItem() }
-        )()
+    newToDoItem
+        .toToDoRecord()
+        .let { Db.save(it) }
+        .toToDoItem()
 }
 

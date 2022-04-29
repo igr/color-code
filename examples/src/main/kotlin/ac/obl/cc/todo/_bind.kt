@@ -15,7 +15,7 @@ val toDo = ToDo(
     findTodoByText = FindTodoByText
 )
 
-// enhanced binding, for debug purposes
+// enhanced binding, for debugging purposes
 val toDoWithLogging = toDo.copy(
     addNewTodo = { withLogging(toDo.addNewTodo, it, "AddNewTodo") }
 )

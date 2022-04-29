@@ -27,6 +27,8 @@ internal object Db {
         }
     }
 
+    // We minimize the number of operations you can do with the state with generic snapshot iterator.
+
     @Synchronized fun snapshot(filter: (ToDoRecord) -> Boolean): List<ToDoRecord> {
         return map.values.filter(filter).toList()
     }

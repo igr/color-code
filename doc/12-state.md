@@ -22,4 +22,4 @@ STATE is also a side-effect, like database, console, file system, sockets...
 
 Do not add operational methods to STATE.
 
-> ⚡️ Pro tip: minimize the number of STATE methods.
+> ⚡️ Pro tip: Minimize the number of STATE methods.

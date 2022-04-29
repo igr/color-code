@@ -46,4 +46,4 @@ with(toDoWithLogging) {
 }
 ```
 
-> ⚡️ Pro tip: either way you do, maintain the list of verbs (bindings) in one place. Think about generating its source.
+> ⚡️ Pro tip: Either way you do, maintain the list of verbs (bindings) in one place. Think about generating its source.

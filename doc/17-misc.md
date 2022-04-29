@@ -6,6 +6,12 @@
 + `two` - ok
 + `three` or more - avoid
 
+## Use abstraction barriers to control ACTIONs spread
+
+It's very easy to let the ACTIONs spread out. If your code is red and orange, that is not OK.
+
+You can not avoid actions, but you can minimize the usage. By keeping actions in a module and providing them as FUNCTION implementations, you can put things back in control.
+
 ## Distinguish function configuration from function input
 
 Focus on WHAT your _verb_ operates onto. What do we change, transform? The answer gives you the _input_. Everything else is probably a configuration.

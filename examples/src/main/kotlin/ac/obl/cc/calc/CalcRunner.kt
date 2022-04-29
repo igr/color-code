@@ -5,6 +5,7 @@ import ac.obl.cc.ctx.Ctx
 fun main() {
 
     // Examples of Context usage
+    // This approach lead to creating the `Operands` class and `with` function
 
     Ctx.of(Operands.of(2, 3))
         .map { multiply(it) }
@@ -40,12 +41,12 @@ fun main() {
         - printValue
     )
 
-    // Assigning final value to the variable
+    // Assigning final context value to the variable
 
     val result = (
-        Ctx + (Operands.of(2, 3))
-            + add
-    )()
+        Ctx
+            + (Operands.of(2, 3))
+            + add)()
 
     println(result)
 

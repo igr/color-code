@@ -4,7 +4,7 @@ import ac.obl.cc.ctx.CtxD
 
 fun main() {
 
-    // The use of alternative context.
+    // The use of delayed context.
     //
     // ((4 + 8) / 3) + (6 / 2)
 

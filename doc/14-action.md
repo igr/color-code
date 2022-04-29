@@ -21,4 +21,4 @@ val fooAction: (String) -> Number = FooAction
 
 You will often need ACTIONs because of 3rd party code and frameworks. That is OK.   
 
-> ⚡️ Pro tip: try hard to minimize the spread of the ACTIONs.
+> ⚡️ Pro tip: Try hard to minimize the spread of the ACTIONs.

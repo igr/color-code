@@ -10,7 +10,7 @@ We need DATA types that will represent both input and output.
 
 Obviously, we need DATA types for the value: `Value`. This type holds a `Number`, but also a flag that indicates if the value is a float-point number or not.
 
-Interesting is the input tuple naming. The first idea might be `ValueTuple`, or `ValuePair`. Now, here comes one potentially good side of having one single argument - it forces you to think about what is context of a function. So, we are talking here about the `Operands`.    
+Interesting is the input tuple naming. The first idea might be `ValueTuple`, or `ValuePair`. Now, here comes one potentially good side of having one single argument - it forces you to think about what is the actual context of a function. So, we are talking here about the `Operands`.    
 
 > Focus on verbs to get FUNCTIONs.
 

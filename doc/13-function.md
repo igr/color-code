@@ -17,7 +17,11 @@ Sure, FUNCTION may have multiple arguments. However, we may consider multiple ar
 FUNCTIONs arguments can be:
 
 + _explicit_ - part of functions signature.
-+ _implicit_ - an external reference used directly in the function body. 
++ _implicit_ - an external reference used directly in the function body (hard-coded).
+
+> ⚡️ Pro tip: Avoid _implicit_ arguments.
+
+If _implicit_ argument is an ACTION, it automatically spreads to the current FUNCTION.
 
 _Explicit_ arguments may be:
 
@@ -26,7 +30,9 @@ _Explicit_ arguments may be:
 
 _Implicit_ arguments are always **configuration**.
 
-> ⚡️ Pro tip: It may be tricky to distinguish between configuration and the input arguments. Using CONTEXT helps. 
+> ⚡️ Pro tip: Provide configuration parameters within FUNCTION ctor.
+
+It may be tricky to distinguish between configuration and input arguments. Think about the context a FUNCTION is applied to.
 
 ## Function declaration != FUNCTION
 
@@ -37,4 +43,6 @@ This should be obvious, but let's emphasize it. FUNCTION is a reference to a fun
 + having an instance of functional type,
 + or inline lambda that calls declared function.
 
-> ⚡️ Pro tip: Try to minimize anonymous instances when they do not contribute to the domain vocabulary.
+In other words: if you can not pass it, it is not a FUNCTION.
+
+> ⚡️ Pro tip: Minimize anonymous instances as they do not contribute to the domain vocabulary.
