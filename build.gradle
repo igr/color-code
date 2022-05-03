@@ -12,6 +12,8 @@ allprojects {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks.named('wrapper') {
+    gradleVersion = "${gradle_version}"
+    distributionType = Wrapper.DistributionType.ALL
 }
+
