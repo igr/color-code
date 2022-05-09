@@ -33,13 +33,14 @@ Functions, however, require more attention. The template is the following:
 ```text
 * (🟨 or 🟧) <function name>
 arg:
-List of arguments. Implicit arguments are put in brackets.
+<List of arguments. Implicit arguments are put in brackets.>
 out:
-List of outputs. Implicit outputs are put in brackets.
+<List of outputs. Implicit outputs are put in brackets.>
 inv:
-List of invocation subjects. Basically, everything that is _left_ of the dot. Each invocation subject is marked with R (read), W (write), C (create), and I (invocation).  
+<List of invocation subjects. Basically, everything that is _left_ of the dot.
+Each invocation subject is marked with R (read), W (write), C (create), and I (invocation).>  
 use:
-List of used data. Basically, all data _right_ of the dot.
+<List of used data. Basically, all data _right_ of the dot.>
 ```
 
 The signs of **BAD** code:
