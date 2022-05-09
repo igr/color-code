@@ -49,13 +49,15 @@ The signs of **BAD** code:
 + implicit arguments are BAD.
 + implicit outputs are BAD.
 + invocation that is W are BAD (as it modifies external, mutable data).
-+ invocation that is R is suspicious (as it reads external data).
++ invocation that is R may be suspicious (as it reads external data).
++ invocation that is C may be suspicious (as it creates external data).
++ invocation R or C is BAD when operates on and with detected abstraction leaks (see next item).
 + abstraction leaks of the used data are BAD.
 
 The last rule is a bit tricky. With the ISCAN, there are two tricks how to determine _possible_ abstraction leaks:
 
 + too many elements in `use` section
-+ elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself: "does this method need to know about the ____".
++ elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself: "does this function need to know about the ____".
 
 ## Class
 
