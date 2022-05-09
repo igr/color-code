@@ -1,6 +1,6 @@
 # ISCAN
 
-This is a pen-and-paper tool for quick analysis of the code structure. The goal is to be able to tell quickly if the code is rather well-structured or not.
+This is a pen-and-paper tool for quick analysis of the code structure. The goal is to tell quickly if the code is relatively well-structured or not.
 
 The ISCAN report is a distilled version of the code structure.
 
@@ -37,7 +37,7 @@ List of arguments. Implicit arguments are put in brackets.
 out:
 List of outputs. Implicit outputs are put in brackets.
 inv:
-List of invocation subjects. Basically, everything what is _left_ of the dot. Each invocation subject is marked with R (read), W (write), C (create) and I (invocation).  
+List of invocation subjects. Basically, everything that is _left_ of the dot. Each invocation subject is marked with R (read), W (write), C (create), and I (invocation).  
 use:
 List of used data. Basically, all data _right_ of the dot.
 ```
@@ -47,14 +47,14 @@ The signs of **BAD** code:
 + ACTION functions are not OK.
 + implicit arguments are BAD.
 + implicit outputs are BAD.
-+ invocation that are W are BAD (as it modifies external, mutable data).
-+ invocation that are R are suspicious (as it reads external data).
-+ abstraction leaks of used data are BAD.
++ invocation that is W are BAD (as it modifies external, mutable data).
++ invocation that is R is suspicious (as it reads external data).
++ abstraction leaks of the used data are BAD.
 
 The last rule is a bit tricky. With the ISCAN, there are two tricks how to determine _possible_ abstraction leaks:
 
 + too many elements in `use` section
-+ elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself "does this method need to know about the ____".
++ elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself: "does this method need to know about the ____".
 
 ## Class
 
@@ -125,9 +125,9 @@ Above code is BAD:
 - First, the internal state is mutable (STATE)
 - The method has implicit argument and output, `collectedAmount`.
 - The method changes the state of `wallet`.
-- Abstraction leak of `wallet` in the method. Actors are `customer` and `paperboy`. They use `Int` for amount of money. This method DOES NOT need to know about the `wallet` i.e. how the money is actually stored.
+- Abstraction leak of `wallet` in the method. Actors are `customer` and `paperboy`. They use `Int` for the amount of money. This method DOES NOT need to know about the `wallet` i.e. how the money is actually stored.
 
-## ISCAN is work in progress
+## ISCAN is a work in progress
 
 Time needed.
 
