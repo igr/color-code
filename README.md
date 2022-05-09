@@ -10,7 +10,7 @@ We need a new term for the code categorization. Common terms, 'type' or 'kind,' 
 
 Let's begin.
 
-## Content
+## Table of Contents
 
 + [🟦 DATA](doc/10-data.md)
 + [🟪 BUILDER](doc/11-builder.md)
@@ -27,6 +27,10 @@ Let's begin.
 + [Calculator](doc/30-example-calculator.md) - using `Ctx`
 + [ToDo App](doc/31-example-todo.md) - simple app with two layers
 + [Restaurants](doc/32-example-restaurants.md) - real-world web app with Ktor & Exposed.
+
+### Tools
+
++ [ISCAN](doc/iscan.md) - pen-n-paper tool for analyzing code quality.
 
 ## Primary colors
 
