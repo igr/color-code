@@ -6,7 +6,7 @@ The ISCAN report is a distilled version of the code structure.
 
 ## Data
 
-Data elements (DATA, but properties of the class, too) are simply listed.
+Data elements (DATA, but properties of the class, too) are listed.
 
 For example:
 
@@ -22,7 +22,7 @@ is represented as:
 * 🟦 Customer
 ```
 
-`Wallet` is STATE because it's mutable. `Customer` is DATA because it is not mutable.
+`Wallet` is STATE because it is mutable. `Customer` is DATA because it is not mutable.
 
 List all data types and determine if they are STATE or DATA (mutable or immutable).
 
@@ -37,26 +37,27 @@ arg:
 out:
 <List of outputs. Implicit outputs are put in brackets.>
 inv:
-<List of invocation subjects. Basically, everything that is _left_ of the dot.
+<List of invocation subjects. Everything that is _left_ of the dot.
 Each invocation subject is marked with R (read), W (write), C (create), and I (invocation).>  
 use:
-<List of used data. Basically, all data _right_ of the dot.>
+<List of used data. All data _right_ of the dot.>
 ```
 
 The signs of **BAD** code:
 
-+ ACTION functions are not OK.
-+ implicit arguments are BAD.
-+ implicit outputs are BAD.
-+ invocation that is W are BAD (as it modifies external, mutable data).
-+ invocation that is R may be suspicious (as it reads external data).
-+ invocation that is C may be suspicious (as it creates external data).
-+ invocation R or C is BAD when operates on and with detected abstraction leaks (see next item).
-+ abstraction leaks of the used data are BAD.
++ ACTION is not OK. However, sometimes you can not avoid using an ACTION - that is also OK. 
++ _implicit_ arguments are BAD.
++ _implicit_ outputs are BAD.
++ invocation that is `W` is BAD (it modifies external, mutable data).
++ invocation that is `R` needs to be checked - do we read more than we should (abstraction leak, see the last item)? The **ISCAN**s `use` part detects this.
++ invocation that is `C` is suspicious - do we create something that is not on the same abstraction level.
++ abstraction leaks are BAD.
 
-The last rule is a bit tricky. With the ISCAN, there are two tricks how to determine _possible_ abstraction leaks:
+(These rules need some more work, admittedly, but the gist is there.)
 
-+ too many elements in `use` section
+The last rule is a bit ambiguous. With the ISCAN, there are two tricks how to determine _possible_ abstraction leaks:
+
++ too many elements in `use` section. 
 + elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself: "does this function need to know about the ____".
 
 ## Class
@@ -128,7 +129,7 @@ Above code is BAD:
 - First, the internal state is mutable (STATE)
 - The method has implicit argument and output, `collectedAmount`.
 - The method changes the state of `wallet`.
-- Abstraction leak of `wallet` in the method. Actors are `customer` and `paperboy`. They use `Int` for the amount of money. This method DOES NOT need to know about the `wallet` i.e. how the money is actually stored.
+- Abstraction leak of `wallet` in the method. Actors are `customer` and `paperboy`. They use `Int` for the amount of money. This method DOES NOT need to know about the `wallet` i.e. how the money is stored.
 
 ## ISCAN is a work in progress
 
@@ -136,4 +137,4 @@ Time needed.
 
 ## ISCAN is partial
 
-You don't need to perform the ISCAN of the whole code. It is enough to scan only relevant parts; feel free to ignore the rest.
+You do not need to perform the ISCAN of the whole code. It is enough to scan only relevant parts; feel free to ignore the rest.
