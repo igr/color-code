@@ -33,24 +33,68 @@ Functions, however, require more attention. The template is the following:
 ```text
 * (🟨 or 🟧) <function name>
 arg:
-<List of arguments. Implicit arguments are put in brackets.>
+  - <name>
 out:
-<List of outputs. Implicit outputs are put in brackets.>
+  - <name>
 inv:
-<List of invocation subjects. Everything that is _left_ of the dot.
-Each invocation subject is marked with R (read), W (write), C (create), and I (invocation).>  
+  - <name>[R|W|C|I]+
 use:
-<List of used data. All data _right_ of the dot.>
+  - <name>
 ```
 
-The signs of **BAD** code:
+Here is each section explained.
+
+### ARG
+
+List of arguments. _Implicit_ arguments are surrounded with brackets.
+
+### OUT
+
+List of outputs. _Implicit_ outputs are surrounded with brackets.
+
+### INV
+
+List of invocation subjects (without duplication).
+
+A way to locate all invocation subjects is to find all the invocation dots. Invocation subject is everything that is _left_ of the dot.
+
+Each invocation subject is marked with one of the following:
+
++ `R` - reads something from it, usually data
++ `W` - writes something into it, usually data
++ `C` - creates something, usually data
++ `I` - invocation of another entity
+
+Example:
+
+```kt
+foo.bar(1, 2)
+foo.baz.qux = 2
+```
+
+We have 3 invocation dots. Everything left is: `foo` (invocation), `foo` (read), `baz`(write).
+
+```text
+inv:
+  - foo (I/R)
+  - baz (W)
+```
+### USE
+
+List of used data - or the access.
+
+A way to locate all used data is find all the invocation dots. Everything _right_ of the dot is some kind of data/access.
+
+In above example, right of the dots are: `bar`, `baz`, `qux`.
+
+## The signs of **BAD** code
 
 + ACTION is not OK. However, sometimes you can not avoid using an ACTION - that is also OK. 
 + _implicit_ arguments are BAD.
 + _implicit_ outputs are BAD.
-+ invocation that is `W` is BAD (it modifies external, mutable data).
-+ invocation that is `R` needs to be checked - do we read more than we should (abstraction leak, see the last item)? The **ISCAN**s `use` part detects this.
-+ invocation that is `C` is suspicious - do we create something that is not on the same abstraction level.
++ write invocation (`W`) is BAD (it directly modifies external, mutable data).
++ read invocation (`R`) needs to be checked - are we accessing more than we should (abstraction leak)? The `use` section helps detects this.
++ invocation that is `C` may be suspicious - do we create something that is not on the same abstraction level.
 + abstraction leaks are BAD.
 
 (These rules need some more work, admittedly, but the gist is there.)
@@ -59,6 +103,10 @@ The last rule is a bit ambiguous. With the ISCAN, there are two tricks how to de
 
 + too many elements in `use` section. 
 + elements in `use` section are UNRELATED to method or input arguments _names_. Ask yourself: "does this function need to know about the ____".
+
+## Bad Spreads
+
+This is important. If you detect a bad entity, it spreads to all places where it is used.
 
 ## Class
 
